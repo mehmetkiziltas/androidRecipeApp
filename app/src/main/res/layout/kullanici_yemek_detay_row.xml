@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/textViewYemekDetayAdi"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="139dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="147dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textColor="@color/new_primarycolor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewYemekDetayResmi"
+        android:layout_width="164dp"
+        android:layout_height="107dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="127dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewYemekDetayAdi"
+        app:srcCompat="@drawable/ic_launcher_background" />
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="132dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="149dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="149dp"
+        android:gravity="center"
+        android:text="MALZEMELER"
+        android:textColorHint="@color/new_primarycolor"
+        android:textSize="18sp"
+        android:textColor="@color/new_primarycolor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewYemekDetayResmi" />
+
+    <EditText
+        android:id="@+id/textViewYemekDetayMalzemeler"
+        android:layout_width="369dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="10dp"
+        android:inputType="textMultiLine"
+        android:text="TextView"
+        android:textColor="@color/new_primarycolor"
+        android:textColorHint="@color/new_primarycolor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <EditText
+        android:id="@+id/textView4"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="146dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="136dp"
+        android:gravity="center"
+        android:text="YAPILIŞ"
+        android:textColor="@color/new_primarycolor"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewYemekDetayMalzemeler" />
+
+    <EditText
+        android:id="@+id/textViewYemekYapilisDetay"
+        android:layout_width="362dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="25dp"
+        android:inputType="textMultiLine"
+        android:text="TextView"
+        android:textColor="@color/new_primarycolor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.809"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.047" />
+
+    <ImageView
+        android:id="@+id/imageViewYemekLikeButton"
+        android:layout_width="45dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="66dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageViewYemekDetayResmi"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/like" />
+
+    <Button
+        android:id="@+id/ButtonKullaniciYorumlari"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="291dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Yorum yap"
+        android:textColor="@color/new_primarycolor"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.35"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewYemekYapilisDetay">
+
+    </Button>
+
+    <EditText
+        android:id="@+id/textViewKullaniciYorumYapanAdiSoyadi"
+        android:layout_width="362dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="17dp"
+        android:inputType="textMultiLine"
+        android:textColor="@color/new_primarycolor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ButtonKullaniciYorumlari" />
+
+    <EditText
+        android:id="@+id/textViewKullaniciYemekYorumu"
+        android:layout_width="362dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="17dp"
+        android:inputType="textMultiLine"
+        android:textColor="@color/new_primarycolor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewKullaniciYorumYapanAdiSoyadi" />
+
+</androidx.constraintlayout.widget.ConstraintLayout >

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="@string/nav_ana_sayfa"
+        android:id="@+id/nav_Ana_Sayfa"
+        android:visible="true"/>
+    <item android:title="@string/nav_neli_olsun"
+        android:id="@+id/nav_neli_olsun"
+        android:visible="true"/>
+    <item android:title="@string/nav_bu_gun"
+        android:id="@+id/nav_Bu_Gun"
+        android:visible="true"/>
+</menu>

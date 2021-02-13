@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.computerengineeringdesign2">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Design.NoActionBar">
+        <activity android:name=".KullaniciIslemleri.KullaniciBuGunNeOlsun.KullaniciBuGunNeOlsunYemekSecmeActivity"></activity>
+        <activity android:name=".KullaniciIslemleri.KullaniciBuGunNeOlsun.KullaniciNeliOlsunActivity" />
+        <activity android:name=".KullaniciIslemleri.KullabiciAnaSayfa.EnCokBegenilenYemekActivity" />
+        <activity android:name=".KullaniciIslemleri.KullabiciAnaSayfa.KullaniciNeliOlsunYemekDetaylariActivity" />
+        <activity android:name=".AdminIslemleri.NeliOlsunBelirlemeActivity" />
+        <activity android:name=".AdminIslemleri.AdminYemekEkleme.AdminYorumlarActivity" />
+        <activity android:name=".ExtraAlanlar.KullaniciYorumYapmaAlaniActivity" />
+        <activity android:name=".KullaniciIslemleri.KullaniciBuGunNeOlsun.KullaniciBuGunNeolsunDetayActivity" />
+        <activity android:name=".ExtraAlanlar.KullaniciYemekDetaylariActivity" />
+        <activity android:name=".ExtraAlanlar.YemekTarifiSecmeActivity" />
+        <activity android:name=".KullaniciIslemleri.KullabiciAnaSayfa.KullaniciForgetPasswordActivity" />
+        <activity android:name=".KullaniciIslemleri.KullabiciAnaSayfa.KullaniciGirisActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".AdminIslemleri.AdminActivity" />
+        <activity android:name=".AdminIslemleri.AdminGiris.ForgetPasswordActivity" />
+        <activity android:name=".AdminIslemleri.AdminGiris.AdminGirisActivity" />
+        <activity android:name=".KullaniciIslemleri.KullabiciAnaSayfa.YemekEklemeActivity" />
+        <activity android:name=".KullaniciIslemleri.KullabiciAnaSayfa.AnaSayfaActivity" />
+        <activity android:name=".KullaniciIslemleri.KullabiciAnaSayfa.FavorilerimActivity" />
+    </application>
+
+</manifest>

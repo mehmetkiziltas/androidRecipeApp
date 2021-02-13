@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminIslemleri.NeliOlsunBelirlemeActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".AdminIslemleri.NeliOlsunBelirlemeActivity">
+
+        <ImageView
+            android:id="@+id/imageViewAdminNeliOlsunResmi"
+            android:layout_width="140dp"
+            android:layout_height="125dp"
+            android:layout_marginStart="141dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="130dp"
+            android:background="@color/new_primarycolor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/group" />
+
+        <EditText
+            android:id="@+id/yemekAdminNeliOlsunText"
+            android:layout_width="339dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="92dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="27dp"
+            android:hint="yemek İçeriği"
+            android:textColor="@color/new_primarycolor"
+            android:textColorHint="@color/new_primarycolor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.38"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewAdminNeliOlsunResmi">
+
+        </EditText>
+
+        <Button
+            android:id="@+id/UploadAdminNeliOlsunButton"
+            android:layout_width="169dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="121dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="121dp"
+            android:layout_marginBottom="50dp"
+            android:background="@color/new_primarycolor"
+            android:text="Upload"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/yemekAdminNeliOlsunText" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

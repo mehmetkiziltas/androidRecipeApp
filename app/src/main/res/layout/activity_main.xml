@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".KullaniciIslemleri.KullabiciAnaSayfa.AnaSayfaActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:context=".KullaniciIslemleri.KullabiciAnaSayfa.AnaSayfaActivity">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/main_nav"
+            android:layout_width="398dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="6dp"
+            android:background="@color/white"
+            android:backgroundTint="@color/new_primarycolor"
+            android:foregroundGravity="center"
+            app:itemHorizontalTranslationEnabled="true"
+            app:itemTextColor="@color/new_primarycolor"
+            app:layout_constraintBottom_toTopOf="@+id/MainframeLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:menu="@menu/main_menu">
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+        <FrameLayout
+            android:id="@+id/MainframeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="669dp"
+            android:layout_above="@id/main_nav"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="0dp">
+
+        </FrameLayout>
+
+    </RelativeLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_left_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:menu="@menu/left_menu"
+        android:background="@color/left_menu_color"
+        android:layout_gravity="start">
+    </com.google.android.material.navigation.NavigationView>
+
+</androidx.drawerlayout.widget.DrawerLayout>

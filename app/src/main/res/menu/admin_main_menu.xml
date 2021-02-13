@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/nav_admin_kategori_ekle"
+        android:id="@+id/admin_kategori_ekle"/>
+    <item android:title="@string/nav_admin_yemek_ekle"
+        android:id="@+id/admin_yemek_ekle"/>
+    <item android:title="@string/nav_yemek_onay"
+        android:id="@+id/admin_yemek_onayla"/>
+</menu>

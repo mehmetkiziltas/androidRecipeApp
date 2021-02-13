@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/nav_admin_girisi"
+        android:id="@+id/admin_girisi"/>
+    <item android:title="@string/nav_yemek_ekleme"
+        android:id="@+id/yeni_yemek_ekle"/>
+    <item android:title="@string/nav_favorilerim"
+        android:id="@+id/nav_favorilerim"/>
+    <item android:title="@string/nav_en_cok_yorum_yapilan_yemek"
+        android:id="@+id/en_cok_begenilen_yemek"/>
+    <item android:title="@string/nav_kullanici_cikis_yap"
+        android:id="@+id/nav_kullanici_cikis_yap"/>
+
+</menu>

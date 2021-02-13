@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">ComputerEngineeringDesign2</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nav_ana_sayfa">ANA SAYFA</string>
+    <string name="nav_neli_olsun">NELİ OLSUN?</string>
+    <string name="nav_bu_gun">BU GÜN</string>
+    <string name="nav_favorilerim">FAVORİLERİM</string>
+    <string name="nav_yemek_ekleme">YEMEK EKLE</string>
+    <string name="nav_admin_girisi">ADMİN</string>
+    <string name="nav_admin_kategori_ekle">KATEGORİ EKLE</string>
+    <string name="nav_admin_yemek_ekle">YEMEK EKLE</string>
+    <string name="nav_yemek_onay">YEMEK ONAYI</string>
+    <string name="nav_admin_menu_yorumler">YORUMLAR</string>
+    <string name="nav_en_cok_yorum_yapilan_yemek">EN BEĞENİLEN</string>
+    <string name="nav_kullanici_cikis_yap">ÇIKIŞ YAP</string>
+</resources>

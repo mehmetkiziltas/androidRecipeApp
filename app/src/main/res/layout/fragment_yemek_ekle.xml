@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".AdminIslemleri.AdminYemekEkleme.YemekEkleFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".AdminIslemleri.AdminYemekEkleme.YemekEkleFragment">
+
+        <EditText
+            android:id="@+id/yemekAdminYemekText"
+            android:layout_width="382dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="16dp"
+            android:hint="yemek kategori"
+            android:textColor="@color/new_primarycolor"
+            android:textColorHint="@color/new_primarycolor"
+            app:layout_constraintBottom_toTopOf="@+id/YemekadiText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextYmeginOzelligi"
+            app:layout_goneMarginEnd="10dp">
+
+        </EditText>
+
+        <EditText
+            android:id="@+id/YemekadiText"
+            android:layout_width="383dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="12dp"
+            android:ems="10"
+            android:hint="yemek adı"
+            android:inputType="textPersonName"
+            android:textColor="@color/new_primarycolor"
+            android:textColorHint="@color/new_primarycolor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/yemekAdminYemekText" />
+
+        <EditText
+            android:id="@+id/yemekYapilisText"
+            android:layout_width="381dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="2dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="yapılış"
+            android:inputType="textMultiLine"
+            android:textColor="@color/new_primarycolor"
+            android:textColorHint="@color/new_primarycolor"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.576"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/malzemelerText" />
+
+        <Button
+            android:id="@+id/UploadButton"
+            android:layout_width="169dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="121dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="121dp"
+            android:layout_marginBottom="40dp"
+            android:background="@color/new_primarycolor"
+            android:text="Upload"
+            android:textColorLink="@color/new_primarycolor"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/yemekYapilisText"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/malzemelerText"
+            android:layout_width="384dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="2dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="malzemeler"
+            android:inputType="textMultiLine"
+            android:textColor="@color/new_primarycolor"
+            android:textColorHint="@color/new_primarycolor"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/YemekadiText" />
+
+        <EditText
+            android:id="@+id/editTextYmeginOzelligi"
+            android:layout_width="377dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="46dp"
+            android:layout_marginEnd="17dp"
+            android:hint="Yemeğin Özelliği"
+            android:textSize="15dp"
+            android:inputType="textMultiLine"
+            android:textColor="@color/new_primarycolor"
+            android:textColorHint="@color/new_primarycolor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewAdminYemekResmi">
+
+        </EditText>
+
+        <ImageView
+            android:id="@+id/imageViewAdminYemekResmi"
+            android:layout_width="140dp"
+            android:layout_height="125dp"
+            android:layout_marginStart="141dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="130dp"
+            android:background="@color/new_primarycolor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/group" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
