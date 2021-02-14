@@ -40,7 +40,8 @@ public class KullaniciBuGunAdapter extends RecyclerView.Adapter<KullaniciBuGunAd
             holder.yemekAdi.setText(YemekAdiList.get(position));
             Picasso.get().load(imageViewList.get(position)).into(holder.imageView);
         } catch (Exception e) {
-            e.printStackTrace();
+            holder.yemekAdi.setText("");
+
         }
     }
 

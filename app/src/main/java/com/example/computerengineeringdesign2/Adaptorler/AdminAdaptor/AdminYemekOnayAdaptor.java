@@ -62,11 +62,20 @@ public class AdminYemekOnayAdaptor extends RecyclerView.Adapter<AdminYemekOnayAd
     @Override
     public void onBindViewHolder(@NonNull AdminYemekOnayAdaptor.PostHolder holder, int position) {
         firebaseFirestore = FirebaseFirestore.getInstance();
-        holder.yemekAdi.setText(YemekAdiList.get(position));
-        holder.malzemeler.setText(malzemelerList.get(position));
-        holder.yapilis.setText(yapilisList.get(position));
-        holder.yemekIcerik.setText(yemekIcerikList.get(position));
-        Picasso.get().load(imageViewList.get(position)).into(holder.imageView);
+        try {
+            holder.yemekAdi.setText(YemekAdiList.get(position));
+            holder.malzemeler.setText(malzemelerList.get(position));
+            holder.yapilis.setText(yapilisList.get(position));
+            holder.yemekIcerik.setText(yemekIcerikList.get(position));
+            holder.kategorisi.setText(kategoriList.get(position));
+            Picasso.get().load(imageViewList.get(position)).into(holder.imageView);
+        } catch (Exception e) {
+            holder.yemekAdi.setText("");
+            holder.malzemeler.setText("");
+            holder.yapilis.setText("");
+            holder.yemekIcerik.setText("");
+            holder.kategorisi.setText("");
+        }
         holder.YemekOnay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,10 +99,16 @@ public class AdminYemekOnayAdaptor extends RecyclerView.Adapter<AdminYemekOnayAd
                                 if (task.isSuccessful()) {
                                     for (QueryDocumentSnapshot document : task.getResult()) {
                                         document.getReference().delete();
+                                        notifyDataSetChanged();
                                     }
                                     Log.d(TAG, "onComplete: ");
                                     Toast.makeText(mContext, "Onay Başarılı", Toast.LENGTH_SHORT).show();
                                     notifyDataSetChanged();
+                                    holder.yemekAdi.setText("");
+                                    holder.malzemeler.setText("");
+                                    holder.yapilis.setText("");
+                                    holder.yemekIcerik.setText("");
+                                    holder.kategorisi.setText("");
                                 }
                             }
                         });
@@ -117,6 +132,46 @@ public class AdminYemekOnayAdaptor extends RecyclerView.Adapter<AdminYemekOnayAd
                 });
             }
         });
+        holder.Guncelle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HashMap<String, Object> postData = new HashMap<>();
+                postData.put("downloadUrl", imageViewList.get(position));
+                postData.put("malzemelerField", holder.malzemeler.getText());
+                postData.put("userEmail", FirebaseAuth.getInstance().getCurrentUser().getEmail());
+                postData.put("yemekAdiField", holder.yemekAdi.getText());
+                postData.put("yemekYapilisField", holder.yapilis.getText());
+                postData.put("yemekKategorisi", holder.kategorisi.getText());
+                postData.put("yemekIcerigi", holder.yemekIcerik.getText());
+                postData.put("begeniSayisi",0);
+
+                firebaseFirestore.collection(kategoriList.get(position)).add(postData).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentReference> task) {
+                        firebaseFirestore.collection("Onaylanmamıs Listesi").whereEqualTo("yemekAdiField",YemekAdiList.get(position))
+                                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                        document.getReference().delete();
+                                        notifyDataSetChanged();
+                                    }
+                                    Log.d(TAG, "onComplete: ");
+                                    Toast.makeText(mContext, "Onay Başarılı", Toast.LENGTH_SHORT).show();
+                                    notifyDataSetChanged();
+                                    holder.yemekAdi.setText("");
+                                    holder.malzemeler.setText("");
+                                    holder.yapilis.setText("");
+                                    holder.yemekIcerik.setText("");
+                                    holder.kategorisi.setText("");
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+        });
     }
 
     @Override
@@ -126,21 +181,23 @@ public class AdminYemekOnayAdaptor extends RecyclerView.Adapter<AdminYemekOnayAd
 
     public class PostHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
-        TextView yemekAdi;
+        TextView yemekAdi,kategorisi;
         TextView malzemeler,yemekIcerik;
         TextView yapilis;
-        Button YemekOnay;
+        Button YemekOnay, Guncelle;
         Button YemekSil;
         public PostHolder(@NonNull View itemView) {
             super(itemView);
 
-            yemekIcerik = itemView.findViewById(R.id.textViewAdminYmekOnayYemekOzelligi);
+            yemekIcerik = itemView.findViewById(R.id.textViewAdminYemekOnayYemekIcerigi);
             yemekAdi = itemView.findViewById(R.id.textAdminYemekOnayYemekAdi);
             imageView = itemView.findViewById(R.id.imageViewAdminYemekOnayYemekResmi);
             malzemeler = itemView.findViewById(R.id.textViewAdminYemekOnayYemekMalzemeler);
             yapilis = itemView.findViewById(R.id.textViewAdminYemekOnayYapilisDetay);
             YemekOnay = itemView.findViewById(R.id.AdminOnaylaButton);
             YemekSil = itemView.findViewById(R.id.AdminSilButton);
+            Guncelle = itemView.findViewById(R.id.AdminGuncelleButton);
+            kategorisi = itemView.findViewById(R.id.textViewAdminYmekOnayYemekKategorisi);
         }
     }
 }

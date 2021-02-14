@@ -83,6 +83,8 @@ public class NeliOlsunFragment extends Fragment {
     }
 
     private void getDataFormFirestore() {
+        NeliOlsunList.removeAll(NeliOlsunList);
+        downloadsUrlList.removeAll(downloadsUrlList);
         CollectionReference collectionReference = firebaseFirestore.collection("Neli Olsun");
         collectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override

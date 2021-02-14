@@ -53,13 +53,22 @@ public class KullaniciNeliOlsunDetayAdaptor extends RecyclerView.Adapter<Kullani
 
     @Override
     public void onBindViewHolder(@NonNull KullaniciNeliOlsunDetayAdaptor.PostHolder holder, int position) {
-        holder.kategoriAdi.setText(kategoriAdiList.get(position));
-        holder.yemekAdi.setText(yemekAdiList.get(position));
-        holder.malzemeler.setText(malzemelerList.get(position));
-        holder.yapilis.setText(yapilisList.get(position));
-        holder.yorumYapanAdSoyad.setText(yorumYapanAdiSoyadiList.get(position));
-        holder.yorum.setText(yapilanYorumList.get(position));
-        Picasso.get().load(imageViewList.get(position)).into(holder.imageView);
+        try {
+            holder.kategoriAdi.setText(kategoriAdiList.get(position));
+            holder.yemekAdi.setText(yemekAdiList.get(position));
+            holder.malzemeler.setText(malzemelerList.get(position));
+            holder.yapilis.setText(yapilisList.get(position));
+            holder.yorumYapanAdSoyad.setText(yorumYapanAdiSoyadiList.get(position));
+            holder.yorum.setText(yapilanYorumList.get(position));
+            Picasso.get().load(imageViewList.get(position)).into(holder.imageView);
+        } catch (Exception e) {
+            holder.kategoriAdi.setText("");
+            holder.yemekAdi.setText("");
+            holder.malzemeler.setText("");
+            holder.yapilis.setText("");
+            holder.yorumYapanAdSoyad.setText("");
+            holder.yorum.setText("");
+        }
     }
 
     @Override

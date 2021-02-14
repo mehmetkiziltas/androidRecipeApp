@@ -68,6 +68,13 @@ public class KullaniciNeliOlsunYemekDetaylariActivity extends AppCompatActivity 
     }
 
     private void getDataFormFirestore() {
+        yemekAdiListFB.removeAll(yemekAdiListFB);
+        kategoriAdiListFB.removeAll(kategoriAdiListFB);
+        imageViewListFB.removeAll(imageViewListFB);
+        malzemelerListFB.removeAll(malzemelerListFB);
+        yapilisListFB.removeAll(yapilisListFB);
+        yorumYapanAdiSoyadiListFB.removeAll(yorumYapanAdiSoyadiListFB);
+        yapilanYorumListFB.removeAll(yapilanYorumListFB);
         CollectionReference collectionReference = firebaseFirestore.collection("Kategoriler");
         collectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override

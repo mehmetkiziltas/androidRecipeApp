@@ -61,6 +61,10 @@ public class EnCokBegenilenYemekActivity extends AppCompatActivity {
     }
 
     private void getDataFormFirestore() {
+        kategoriAdiListFB.removeAll(kategoriAdiListFB);
+        imageViewListFB.removeAll(imageViewListFB);
+        yemekAdiListFB.removeAll(yemekAdiListFB);
+        malzemelerListFB.removeAll(yapilisListFB);
         CollectionReference collectionReference = firebaseFirestore.collection("Kategoriler");
         collectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override

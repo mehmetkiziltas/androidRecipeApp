@@ -96,15 +96,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:text="FORGET PASSWORD?"
+        android:layout_marginTop="20dp"
         android:onClick="passwordForget"
+        android:text="FORGET PASSWORD?"
         android:textColor="@color/new_primarycolor"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BtnLogin" />
+
+    <TextView
+        android:id="@+id/textViewKullaniciRegister"
+        android:layout_width="103dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="32dp"
+        android:gravity="center"
+        android:text="REGISTER"
+        android:textColor="@color/new_primarycolor"
+        android:textSize="18dp"
+        android:onClick="KullaniciRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/forgetPassword"
         app:layout_constraintTop_toBottomOf="@+id/BtnLogin" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

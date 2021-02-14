@@ -66,12 +66,18 @@ public class FavorilerimActivity extends AppCompatActivity {
     }
 
     private void getDataFormFirestore() {
+        yemekAdiList.removeAll(yemekAdiList);
+        downloadsUrlList.removeAll(downloadsUrlList);
+        malzemelerList.removeAll(malzemelerList);
+        yapilisList.removeAll(yapilisList);
+        yemekKategorisiList.removeAll(yemekKategorisiList);
         CollectionReference collectionReference = firebaseFirestore.collection("Favoriler");
         collectionReference.whereEqualTo("useEmail", FirebaseAuth.getInstance().getCurrentUser().getEmail()).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 if (error != null) {
-                    Toast.makeText(FavorilerimActivity.this, error.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(FavorilerimActivity.this, error.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                    yemekAdiList.add("Hiç yemek Beğenmediniz");
                 }
                 if (value != null) {
                     for (DocumentSnapshot snapshot : value.getDocuments()) {

@@ -55,12 +55,19 @@ public class AdminYorumlarAdaptor extends RecyclerView.Adapter<AdminYorumlarAdap
     public void onBindViewHolder(@NonNull AdminYorumlarAdaptor.PostHolder holder, int position) {
         firebaseFirestore = FirebaseFirestore.getInstance();
 
-        holder.yemekAdi.setText(YemekAdiList.get(position));
-        holder.kategori.setText(KategoriList.get(position));
-        holder.yorumYapanAdSoyad.setText(yorumYapanAdiSoyadiList.get(position));
-        holder.YemekYorum.setText(yorumList.get(position));
+        try {
+            holder.yemekAdi.setText(YemekAdiList.get(position));
+            holder.kategori.setText(KategoriList.get(position));
+            holder.yorumYapanAdSoyad.setText(yorumYapanAdiSoyadiList.get(position));
+            holder.YemekYorum.setText(yorumList.get(position));
 
-        Picasso.get().load(imageViewList.get(position)).into(holder.imageView);
+            Picasso.get().load(imageViewList.get(position)).into(holder.imageView);
+        } catch (Exception e) {
+            holder.yemekAdi.setText("");
+            holder.kategori.setText("");
+            holder.yorumYapanAdSoyad.setText("");
+            holder.YemekYorum.setText("");
+        }
 
         holder.YorumSilButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +79,11 @@ public class AdminYorumlarAdaptor extends RecyclerView.Adapter<AdminYorumlarAdap
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 document.getReference().delete();
+                                notifyDataSetChanged();
+                                holder.yemekAdi.setText("");
+                                holder.kategori.setText("");
+                                holder.yorumYapanAdSoyad.setText("");
+                                holder.YemekYorum.setText("");
                             }
                             Toast.makeText(mContext, "Yorum Silindi", Toast.LENGTH_SHORT).show();
                         }

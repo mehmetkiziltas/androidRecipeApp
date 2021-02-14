@@ -13,9 +13,12 @@ import android.widget.FrameLayout;
 import com.example.computerengineeringdesign2.AdminIslemleri.AdminYemekEkleme.AdminYorumlarActivity;
 import com.example.computerengineeringdesign2.AdminIslemleri.AdminYemekEkleme.KategoriEkleFragment;
 import com.example.computerengineeringdesign2.AdminIslemleri.AdminYemekEkleme.YemekEkleFragment;
+import com.example.computerengineeringdesign2.KullaniciIslemleri.KullabiciAnaSayfa.AnaSayfaActivity;
+import com.example.computerengineeringdesign2.KullaniciIslemleri.KullabiciAnaSayfa.KullaniciGirisActivity;
 import com.example.computerengineeringdesign2.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class AdminActivity extends AppCompatActivity {
@@ -57,6 +60,12 @@ public class AdminActivity extends AppCompatActivity {
                     case R.id.admin_neli_olsun:
                         Intent intentNeliOlsun = new Intent(AdminActivity.this,NeliOlsunBelirlemeActivity.class);
                         startActivity(intentNeliOlsun);
+                        return true;
+                    case R.id.admin_cikis:
+                        FirebaseAuth.getInstance().signOut();
+                        Intent intentKullaniciGiris = new Intent(AdminActivity.this, KullaniciGirisActivity.class);
+                        startActivity(intentKullaniciGiris);
+                        finish();
                         return true;
                     default:
                         return false;

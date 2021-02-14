@@ -76,6 +76,9 @@ public class KullaniciNeliOlsunActivity extends AppCompatActivity {
     }
 
     private void getDataFormFirestore() {
+        YemekAdiList.removeAll(YemekAdiList);
+        downloadsUrlList.removeAll(downloadsUrlList);
+        yemekKategorisiList.removeAll(yemekKategorisiList);
         CollectionReference collectionReference = firebaseFirestore.collection("Kategoriler");
         collectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override

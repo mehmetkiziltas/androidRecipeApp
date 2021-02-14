@@ -75,6 +75,8 @@ public class AnaSayfaFragment extends Fragment {
 
 
     public void getDataFormFirestore() {
+        KategoriAdiList.removeAll(KategoriAdiList);
+        downloadsUrlList.removeAll(downloadsUrlList);
         CollectionReference collectionReference = firebaseFirestore.collection("Kategoriler");
         collectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override

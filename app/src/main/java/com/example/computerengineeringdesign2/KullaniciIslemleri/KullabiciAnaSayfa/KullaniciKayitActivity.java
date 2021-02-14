@@ -14,10 +14,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class KullaniciGirisActivity extends AppCompatActivity {
+public class KullaniciKayitActivity extends AppCompatActivity {
+
     private FirebaseAuth firebaseAuth;
     private EditText inputEmail, inputPassword;
     private FirebaseFirestore firebaseFirestore;
@@ -25,48 +25,31 @@ public class KullaniciGirisActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kullanici_giris);
+        setContentView(R.layout.activity_kullanici_kayit);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
 
         firebaseAuth = FirebaseAuth.getInstance();
-        inputEmail = findViewById(R.id.inputSinginEmail);
-        inputPassword = findViewById(R.id.inputSinginPassword);
-
-        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-        if (firebaseUser != null) {
-            Intent intent = new Intent(KullaniciGirisActivity.this, AnaSayfaActivity.class);
-            startActivity(intent);
-            finish();
-        }
+        inputEmail = findViewById(R.id.inputKullaniciKayitSinginEmail);
+        inputPassword = findViewById(R.id.inputKullaniciKayitSinginPassword);
     }
 
-    public void singUpClicked(View view) {
+    public void SingInClicked(View view) {
         String email = inputEmail.getText().toString();
         String password = inputPassword.getText().toString();
-        firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    Intent intent = new Intent(KullaniciGirisActivity.this, AnaSayfaActivity.class);
+                    Intent intent = new Intent(KullaniciKayitActivity.this, AnaSayfaActivity.class);
                     startActivity(intent);
                     finish();
                 }
                 else{
-                    Toast.makeText(getApplicationContext(), "Hata!!" + task.getException(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(KullaniciKayitActivity.this, "Hata!! " + task.getException(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
-    }
-
-    public void passwordForget(View view) {
-        Intent intent = new Intent(KullaniciGirisActivity.this, KullaniciForgetPasswordActivity.class);
-        startActivity(intent);
-    }
-
-    public void KullaniciRegister(View view) {
-        Intent intent = new Intent(KullaniciGirisActivity.this,KullaniciKayitActivity.class);
-        startActivity(intent);
     }
 }

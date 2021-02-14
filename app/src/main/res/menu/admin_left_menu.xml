@@ -7,4 +7,7 @@
     <item android:title="NELİ OLSUN EKLE"
         android:id="@+id/admin_neli_olsun">
     </item>
+    <item android:title="Çıkış"
+        android:id="@+id/admin_cikis">
+    </item>
 </menu>

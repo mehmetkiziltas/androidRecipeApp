@@ -38,10 +38,16 @@ public class KullaniciBuGunDetayAdapter extends RecyclerView.Adapter<KullaniciBu
 
     @Override
     public void onBindViewHolder(@NonNull KullaniciBuGunDetayAdapter.PostHolder holder, int position) {
-        holder.yemekAdi.setText(YemekAdiList.get(position));
-        holder.malzemeler.setText(malzemelerList.get(position));
-        holder.yapilis.setText(yapilisList.get(position));
-        Picasso.get().load(imageViewList.get(position)).into(holder.imageView);
+        try {
+            holder.yemekAdi.setText(YemekAdiList.get(position));
+            holder.malzemeler.setText(malzemelerList.get(position));
+            holder.yapilis.setText(yapilisList.get(position));
+            Picasso.get().load(imageViewList.get(position)).into(holder.imageView);
+        } catch (Exception e) {
+            holder.yemekAdi.setText("");
+            holder.malzemeler.setText("");
+            holder.yapilis.setText("");
+        }
     }
 
     @Override

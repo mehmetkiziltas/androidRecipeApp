@@ -35,8 +35,13 @@ public class KullaniciAnaSayfaAdapter extends RecyclerView.Adapter<KullaniciAnaS
 
     @Override
     public void onBindViewHolder(@NonNull PostHolder holder, int position) {
-        holder.kategoriAdi.setText(kategoriAdiList.get(position));
-        Picasso.get().load(imageViewList.get(position)).into(holder.imageView);
+        try {
+            holder.kategoriAdi.setText(kategoriAdiList.get(position));
+            Picasso.get().load(imageViewList.get(position)).into(holder.imageView);
+        } catch (Exception e) {
+            holder.kategoriAdi.setText("");
+
+        }
     }
 
     @Override

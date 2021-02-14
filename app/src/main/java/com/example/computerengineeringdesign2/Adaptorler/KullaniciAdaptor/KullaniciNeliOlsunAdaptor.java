@@ -39,9 +39,12 @@ public class KullaniciNeliOlsunAdaptor extends RecyclerView.Adapter<KullaniciNel
 
     @Override
     public void onBindViewHolder(@NonNull KullaniciNeliOlsunAdaptor.PostHolder holder, int position) {
-        holder.neliOlsun.setText(NeliOlsunList.get(position));
-        Picasso.get().load(imageViewList.get(position)).into(holder.imageView);
-        Log.d(TAG, "onBindViewHolder: ");
+        try {
+            holder.neliOlsun.setText(NeliOlsunList.get(position));
+            Picasso.get().load(imageViewList.get(position)).into(holder.imageView);
+        } catch (Exception e) {
+            holder.neliOlsun.setText("");
+        }
     }
     public interface RecyclerViewClickListener{
         void onClick(View view, int position);

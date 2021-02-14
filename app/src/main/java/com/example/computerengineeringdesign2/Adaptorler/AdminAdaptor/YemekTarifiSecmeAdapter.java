@@ -38,8 +38,12 @@ public class YemekTarifiSecmeAdapter extends RecyclerView.Adapter<YemekTarifiSec
 
     @Override
     public void onBindViewHolder(@NonNull YemekTarifiSecmeAdapter.PostHolder holder, int position) {
-        holder.yemekAdi.setText(YemekAdiList.get(position));
-        Picasso.get().load(imageViewList.get(position)).into(holder.imageView);
+        try {
+            holder.yemekAdi.setText(YemekAdiList.get(position));
+            Picasso.get().load(imageViewList.get(position)).into(holder.imageView);
+        } catch (Exception e) {
+            holder.yemekAdi.setText("");
+        }
     }
 
     @Override

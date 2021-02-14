@@ -26,6 +26,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.Exclude;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -33,7 +34,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -52,8 +52,28 @@ public class KullaniciYemekDetaylariAdaptor extends RecyclerView.Adapter<Kullani
     private ArrayList<String> begeniSayisiListFB;
     private Context mContext;
     private FirebaseAuth firebaseAuth;
+    private String documentId;
+    private int cagirmaSayisi = 0;
+    private String kategoriIsmi;
     private FirebaseUser firebaseUser;
-    private String userEmail;
+
+    @Exclude
+    public String getKategoriIsmi() {
+        return kategoriIsmi;
+    }
+
+    public void setKategoriIsmi(String kategoriIsmi) {
+        this.kategoriIsmi = kategoriIsmi;
+    }
+
+    @Exclude
+    public String getDocumentId() {
+        return documentId;
+    }
+
+    public void setDocumentId(String documentId) {
+        this.documentId = documentId;
+    }
 
     private FirebaseFirestore firebaseFirestore;
 
@@ -96,6 +116,7 @@ public class KullaniciYemekDetaylariAdaptor extends RecyclerView.Adapter<Kullani
         holder.YemekLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 firebaseFirestore.collection("Favoriler")
                         .whereEqualTo("yemekAdiField", YemekAdiList.get(position))
                         .whereEqualTo("useEmail", FirebaseAuth.getInstance().getCurrentUser().getEmail())
@@ -125,6 +146,28 @@ public class KullaniciYemekDetaylariAdaptor extends RecyclerView.Adapter<Kullani
                                                     @Override
                                                     public void onSuccess(DocumentReference documentReference) {
                                                         Toast.makeText(mContext, "Favorilere Kaydedildi", Toast.LENGTH_SHORT).show();
+
+                                                        firebaseFirestore.collection(yemekKategoriList.get(position)).whereEqualTo("yemekAdiField", YemekAdiList.get(position)).addSnapshotListener(new EventListener<QuerySnapshot>() {
+                                                            @Override
+                                                            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                                                                if (error != null) {
+                                                                    return;
+                                                                }
+                                                                if (value != null) {
+                                                                    for (DocumentSnapshot snapshot : value.getDocuments()) {
+                                                                        setDocumentId(snapshot.getId());
+                                                                        setKategoriIsmi(yemekKategoriList.get(position));
+                                                                        System.out.println("getDocumentId() : " + getDocumentId()  + "getKategoriIsmi() : " + getKategoriIsmi());
+                                                                        break;
+                                                                    }
+                                                                    if (cagirmaSayisi == 0) {
+                                                                        for (cagirmaSayisi = 0; cagirmaSayisi<1;cagirmaSayisi++ ) {
+                                                                            BegeniArttir(getKategoriIsmi(),getDocumentId());
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        });
                                                     }
                                                 }).addOnFailureListener(new OnFailureListener() {
                                             @Override
@@ -150,6 +193,19 @@ public class KullaniciYemekDetaylariAdaptor extends RecyclerView.Adapter<Kullani
                 intent.putExtra("yemekKategorisi", yemekKategoriList.get(position));
                 intent.putExtra("downloadUrl", imageViewList.get(position));
                 mContext.startActivity(intent);
+            }
+        });
+    }
+    private void BegeniArttir(String isim,String id) {
+        System.out.println("getDocumentId() : " + id  + "getKategoriIsmi() : " + isim);
+        firebaseFirestore.collection(isim).document(id).update("begeniSayisi", FieldValue.increment(1)).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(mContext, "Ymek Beğeni Sayısı Arttırıldı.", Toast.LENGTH_SHORT).show();
+                } else {
+                    Log.e(TAG, "onComplete: ", task.getException());
+                }
             }
         });
     }
@@ -180,7 +236,6 @@ public class KullaniciYemekDetaylariAdaptor extends RecyclerView.Adapter<Kullani
             mButton = itemView.findViewById(R.id.ButtonKullaniciYorumlari);
             firebaseFirestore = FirebaseFirestore.getInstance();
             firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-            userEmail = firebaseUser.getEmail();
             kullaniciYemekAdiYorumYapildiMiKontrolList = new ArrayList<>();
             begeniSayisiListFB = new ArrayList<>();
         }

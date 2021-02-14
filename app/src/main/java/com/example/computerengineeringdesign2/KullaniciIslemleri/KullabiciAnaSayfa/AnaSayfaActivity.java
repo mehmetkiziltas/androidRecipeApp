@@ -82,8 +82,10 @@ public class AnaSayfaActivity extends AppCompatActivity {
                         startActivity(intent);
                         return true;
                     case R.id.admin_girisi:
+                        FirebaseAuth.getInstance().signOut();
                         Intent intentadmin = new Intent(AnaSayfaActivity.this, AdminGirisActivity.class);
                         startActivity(intentadmin);
+                        finish();
                         return true;
                     case R.id.en_cok_begenilen_yemek:
                         Intent intentEnCokBegenilenYemek = new Intent(AnaSayfaActivity.this,EnCokBegenilenYemekActivity.class);

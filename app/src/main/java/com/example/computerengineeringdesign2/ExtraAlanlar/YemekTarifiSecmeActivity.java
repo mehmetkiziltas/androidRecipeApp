@@ -74,6 +74,8 @@ public class YemekTarifiSecmeActivity extends AppCompatActivity {
     }
 
     private void getDataFormFirestore() {
+        YemekAdiList.removeAll(YemekAdiList);
+        downloadsUrlList.removeAll(downloadsUrlList);
         System.out.println("gelenYemekKategorisiDeger : " + gelenYemekKategorisiDeger);
         CollectionReference collectionReference = firebaseFirestore.collection(gelenYemekKategorisiDeger);
         collectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {

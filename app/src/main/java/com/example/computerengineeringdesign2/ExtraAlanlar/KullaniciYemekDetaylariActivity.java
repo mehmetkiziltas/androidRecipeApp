@@ -67,6 +67,13 @@ public class KullaniciYemekDetaylariActivity extends AppCompatActivity {
     }
 
     private void getDataFormFirestore() {
+        yemekAdiList.removeAll(yemekAdiList);
+        downloadsUrlList.removeAll(downloadsUrlList);
+        malzemelerList.removeAll(malzemelerList);
+        yapilisList.removeAll(yapilisList);
+        yemekKategorisiList.removeAll(yemekKategorisiList);
+        kullaniciYorumListFB.removeAll(kullaniciYorumListFB);
+        yorumYapanAdiSoyadiListFB.removeAll(yorumYapanAdiSoyadiListFB);
         CollectionReference collectionReference = firebaseFirestore.collection(gelenKategoriDeger);
         collectionReference.whereEqualTo("yemekAdiField", gelenYemekAdiDeger).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
